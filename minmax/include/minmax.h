@@ -11,6 +11,7 @@ using std::sort;
 namespace graal {
 
 /*! 
+ * teste
  * Exemplo de documentação seguindo o formato Doxygen
  *
  * @tparam Itr iterator para o range.
@@ -27,7 +28,19 @@ template <typename Itr, typename Compare >
 std::pair<Itr, Itr> minmax( Itr first, Itr last, Compare cmp )
 {
     // TODO
-    return std::make_pair( first, first );
+    Itr min=first, max=first;
+    for(Itr i = first; i!=last; i++){
+        if (cmp(*i, *min))
+        {
+            min = i;
+        }
+        if(cmp(*max, *i)){
+            max = i;
+        }else if(*max==*i){
+            max=i;
+        }
+    }
+    return std::make_pair( min, max );
 }
 
 }
